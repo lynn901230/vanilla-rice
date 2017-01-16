@@ -8,17 +8,21 @@ public class PanelSlider : MonoBehaviour
     public Vector3 inPosition;        // スライドイン後の位置
     public Vector3 outPosition;      // スライドアウト後の位置
     public float duration = 1.0f;    // スライド時間（秒）
+    public int clickcnt = 0;
 
     // スライドイン（Pauseボタンが押されたときに、これを呼ぶ）
-    public void SlideIn()
+    public void Slider()
     {
-        StartCoroutine(StartSlidePanel(true));
-    }
-
-    // スライドアウト
-    public void SlideOut()
-    {
-        StartCoroutine(StartSlidePanel(false));
+        clickcnt++;
+        if (clickcnt % 2 == 1)
+        {
+            StartCoroutine(StartSlidePanel(true));
+        }
+        // スライドアウト
+        else
+        {
+            StartCoroutine(StartSlidePanel(false));
+        }
     }
 
     private IEnumerator StartSlidePanel(bool isSlideIn)
@@ -32,13 +36,12 @@ public class PanelSlider : MonoBehaviour
         else
         {
             moveDistance = (outPosition - startPos);
-
-            while ((Time.time - startTime) < duration)
-            {
-                transform.localPosition = startPos + moveDistance * animCurve.Evaluate((Time.time - startTime) / duration);
-                yield return 0;        // 1フレーム後、再開
-            }
-            transform.localPosition = startPos + moveDistance;
         }
+        while ((Time.time - startTime) < duration)
+        {
+            transform.localPosition = startPos + moveDistance * animCurve.Evaluate((Time.time - startTime) / duration);
+            yield return 0;        // 1フレーム後、再開
+        }
+        transform.localPosition = startPos + moveDistance;
     }
 }
