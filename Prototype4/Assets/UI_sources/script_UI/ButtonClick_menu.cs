@@ -21,6 +21,10 @@ public class ButtonClick_menu: MonoBehaviour
             case 2:
                 Application.LoadLevel("pazzuleScene");
                 break;
+
+            case 3:
+                Application.LoadLevel("setScene");
+                break;
             default:
                 break;
         }
