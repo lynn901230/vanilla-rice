@@ -19,19 +19,16 @@ public class MainCamera : MonoBehaviour {
         buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
         _namelist = buttonClick.namelist;
 
-        GameObject hero = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        hero.transform.position = new Vector3(-5, 1, 0);
-        hero.GetComponent<Renderer>().material.color = Color.red;
+        GameObject hero = GameObject.Find("self");
+        //hero.AddComponent<Rigidbody>();
+        //hero.GetComponent<Rigidbody>().mass = 100;
 
         //主人公カメラ視点設定
-        transform.position = new Vector3(-5, 1.7f, 0);
+        transform.position = new Vector3(-5, 1.7f, 1);
         transform.rotation = Quaternion.Euler(0, 90, 0);
 
-        enemy2 = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        enemy2 = GameObject.Find("enemy");
         enemy2.name = "enemy2";
-        enemy2.GetComponent<Renderer>().material.color = Color.blue;
-        enemy2.transform.position = new Vector3(3, 1, 0);
-        enemy2.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         enemy2.AddComponent<Rigidbody>();
         enemy2.GetComponent<Rigidbody>().mass = 100;
 
@@ -59,11 +56,11 @@ public class MainCamera : MonoBehaviour {
         }//50の処理をするunity側のコードを記述 straight
         else if (number == "51")
         {
-            targetObject.transform.position += new Vector3(0, 0, 1);
+            targetObject.transform.position += new Vector3(0, 0, 0.75f);
         }//51の処理をするunity側のコードを記述 left
         else if (number == "52")
         {
-            targetObject.transform.position += new Vector3(0, 0, -1);
+            targetObject.transform.position += new Vector3(0, 0, -0.75f);
         }//52の処理をするunity側のコードを記述 right
     }
 
