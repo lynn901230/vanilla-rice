@@ -12,7 +12,7 @@ public class ButtonClick_menu: MonoBehaviour
         {
 
             case 0:
-                Application.LoadLevel("test");
+                Application.LoadLevel("chapter1");
                 break;
             case 1:
                 Application.LoadLevel("charaScene");

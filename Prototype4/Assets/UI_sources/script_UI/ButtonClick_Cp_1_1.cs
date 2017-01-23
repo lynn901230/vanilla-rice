@@ -12,14 +12,14 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
         {
 
             case 0:
-                Application.LoadLevel("test");
+                Application.LoadLevel("menu");
                 break;
             case 1:
-                Application.LoadLevel("charaScene");
+                Application.LoadLevel("test");
                 break;
 
             case 2:
-                Application.LoadLevel("pazzuleScene");
+                Application.LoadLevel("classroom");
                 break;
             default:
                 break;
