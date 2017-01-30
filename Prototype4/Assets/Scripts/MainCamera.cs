@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class MainCamera : MonoBehaviour {
     // Use this for initialization
-    //private List<GameObject> myList = new List<GameObject>();
     private ButtonClick buttonClick;
     private List<string> _namelist = new List<string>();
     public GameObject targetObject;
-    public GameObject enemy1;
     public GameObject enemy2;
-    public GameObject object1;
-    public GameObject object2;
     private int j = 0, k = 0;
     int speed = 1;
     public GameObject desk;
@@ -19,18 +16,18 @@ public class MainCamera : MonoBehaviour {
         buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
         _namelist = buttonClick.namelist;
 
-        GameObject hero = GameObject.Find("self");
-        //hero.AddComponent<Rigidbody>();
-        //hero.GetComponent<Rigidbody>().mass = 100;
+        //GameObject hero = GameObject.Find("self");
 
         //主人公カメラ視点設定
         transform.position = new Vector3(-5, 1.7f, 1);
         transform.rotation = Quaternion.Euler(0, 90, 0);
 
-        enemy2 = GameObject.Find("enemy");
+        enemy2 = GameObject.Find("Enemy");
         enemy2.name = "enemy2";
         enemy2.AddComponent<Rigidbody>();
-        enemy2.GetComponent<Rigidbody>().mass = 100;
+        enemy2.GetComponent<Rigidbody>().useGravity = false;
+        enemy2.GetComponent<Rigidbody>().isKinematic = true;
+        enemy2.GetComponent<Rigidbody>().mass = 200;       
 
         desk = GameObject.Find("desk02-test");
         desk.name = "object1";
