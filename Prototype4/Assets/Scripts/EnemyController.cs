@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour {
 
     public Slider enemyHPBar;
     public float enemyhp = 100;
+    public float enemy_damage;
     // Use this for initialization
     void Start () {
         enemyHPBar = GameObject.Find("enemyHPSlider").GetComponent<Slider>();
@@ -32,10 +33,12 @@ public class EnemyController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Object")
         {
-            Shake(gameObject);
-            float damage = Random.Range(30, 51);
-            enemyhp -= damage;
             Destroy(other.gameObject);
+            Shake(gameObject);
+            enemy_damage = Random.Range(30, 51);
+            enemyhp -= enemy_damage;
+            GameObject enemydamageUI = Instantiate(Resources.Load("Prefabs/EnemyDamageUI", typeof(GameObject))) as GameObject;
+            Destroy(enemydamageUI, 1);           
         }
     }
 

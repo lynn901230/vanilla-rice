@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainCamera : MonoBehaviour {
     // Use this for initialization
@@ -12,30 +13,66 @@ public class MainCamera : MonoBehaviour {
     private int j = 0, k = 0;
     int speed = 1;
     public GameObject desk;
+    public string objectName = null;
+    public string clickedObj;
+    // rayが届く範囲
+    public float distance = 10000f;
+
     public void Start () {
         buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
         _namelist = buttonClick.namelist;
-
         //GameObject hero = GameObject.Find("self");
 
         //主人公カメラ視点設定
-        transform.position = new Vector3(-5, 1.7f, 1);
-        transform.rotation = Quaternion.Euler(0, 90, 0);
+        transform.position = new Vector3(-5, 2.7f, 1);
+        transform.rotation = Quaternion.Euler(20, 90, 0);
 
         enemy2 = GameObject.Find("Enemy");
         enemy2.name = "enemy2";
         enemy2.AddComponent<Rigidbody>();
         enemy2.GetComponent<Rigidbody>().useGravity = false;
         enemy2.GetComponent<Rigidbody>().isKinematic = true;
-        enemy2.GetComponent<Rigidbody>().mass = 200;       
+        //enemy2.GetComponent<Rigidbody>().mass = 200;
 
-        desk = GameObject.Find("desk02-test");
-        desk.name = "object1";
-        desk.AddComponent<Rigidbody>();
-        desk.AddComponent<BoxCollider>();
-
-        targetObject = desk;
+        //targetObject = desk;
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        bool temp = EventSystem.current.IsPointerOverGameObject(); //マウスカーソルがuGUIにあるかどうか
+        if (!temp)
+        {
+            // 左クリックを取得
+            if (Input.GetMouseButtonDown(0))
+            {
+                // クリックしたスクリーン座標をrayに変換
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                // Rayの当たったオブジェクトの情報を格納する
+                RaycastHit hit = new RaycastHit();
+                // オブジェクトにrayが当たった時
+                if (Physics.Raycast(ray, out hit, distance) & hit.collider.gameObject.tag == "Object")
+                {
+                    // rayが当たったオブジェクトの名前を取得
+                    objectName = hit.collider.gameObject.name;
+                    clickedObj = hit.collider.gameObject.tag;
+                    desk = GameObject.Find(objectName);
+                    Debug.Log(clickedObj);
+                }
+                else
+                {
+                    clickedObj = hit.collider.gameObject.tag;
+                    Debug.Log(clickedObj);
+                    //clickedObj = LayerMask.LayerToName(hit.collider.gameObject.layer);
+                    objectName = null;
+                    desk = null;
+                    //Debug.Log(desk);
+                }
+                targetObject = desk;
+            }
+        }
+    }
+
     //出力処理
     public void Output()
     {
@@ -124,7 +161,5 @@ public class MainCamera : MonoBehaviour {
         return true;
     }
 
-    // Update is called once per frame
-    void Update () {
-    }
+
 }
