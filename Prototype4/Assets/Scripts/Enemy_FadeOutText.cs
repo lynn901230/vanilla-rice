@@ -12,7 +12,7 @@ public class Enemy_FadeOutText : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        enemyDamage = GameObject.Find("enemy2").GetComponent<EnemyController>();
+        enemyDamage = GameObject.Find("Enemy").GetComponent<EnemyController>();
         enemy_damagetext = GameObject.Find("EnemyDamageText").GetComponent<Text>();
         enemy_damagetext.text = string.Concat("-", enemyDamage.enemy_damage.ToString());
         Debug.Log(enemy_damagetext.text);

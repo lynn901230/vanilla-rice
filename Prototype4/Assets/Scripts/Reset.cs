@@ -27,9 +27,10 @@ public class Reset : MonoBehaviour
         Destroy(destroytarget);
         GameObject enemy2 = Instantiate(Resources.Load("Prefabs/enemy", typeof(GameObject))) as GameObject;
         enemy2.name = "enemy2";
+        //enemy2.AddComponent<BoxCollider>();
         enemy2.AddComponent<Rigidbody>();
-        enemy2.AddComponent<BoxCollider>();
-        enemy2.GetComponent<Rigidbody>().mass = 100;
+        enemy2.GetComponent<Rigidbody>().useGravity = false;
+        enemy2.GetComponent<Rigidbody>().isKinematic = true;
         maincamera.enemy2 = enemy2;
 
     }

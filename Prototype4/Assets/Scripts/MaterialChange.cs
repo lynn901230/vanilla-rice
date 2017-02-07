@@ -23,13 +23,7 @@ public class MaterialChange : MonoBehaviour {
         else
         {
             this.GetComponent<Renderer>().material = _material[0];
-            //Debug.Log(_clicked_obj.clickedObj);
         }
-        //else if(_clicked_obj.objectName != gameObject.name && _clicked_obj.clickedObj != "Button")
-        //{
-        //    Debug.Log(_clicked_obj.clickedObj);
-        //    this.GetComponent<Renderer>().material = _material[0];
-        //}
 
     }
 }

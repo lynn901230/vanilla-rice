@@ -28,13 +28,10 @@ public class MainCamera : MonoBehaviour {
         transform.rotation = Quaternion.Euler(20, 90, 0);
 
         enemy2 = GameObject.Find("Enemy");
-        enemy2.name = "enemy2";
+        //enemy2.name = "enemy2";
         enemy2.AddComponent<Rigidbody>();
         enemy2.GetComponent<Rigidbody>().useGravity = false;
         enemy2.GetComponent<Rigidbody>().isKinematic = true;
-        //enemy2.GetComponent<Rigidbody>().mass = 200;
-
-        //targetObject = desk;
     }
 
     // Update is called once per frame
