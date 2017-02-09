@@ -12,19 +12,16 @@ public class ButtonClick_menu: MonoBehaviour
         {
 
             case 0:
-                Application.LoadLevel("chapter1");
+                Application.LoadLevel("Chapter1");
                 break;
             case 1:
-                Application.LoadLevel("charaScene");
+                Application.LoadLevel("Charactor");
                 break;
 
             case 2:
                 Application.LoadLevel("pazzuleScene");
                 break;
 
-            case 3:
-                Application.LoadLevel("setScene");
-                break;
             default:
                 break;
         }
