@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialSlider : MonoBehaviour {
     public AnimationCurve t_animeCurve = AnimationCurve.Linear(0, 0, 1, 1);
@@ -20,7 +21,10 @@ public class TutorialSlider : MonoBehaviour {
         tutorial_text = GameObject.Find("Tutorial_Text").GetComponent<Text>();
         tutorial_text.text = text_array[clickCnt];
         downArrow = GameObject.Find("Down_Arrow").GetComponent<Image>();
-        StartCoroutine(TSlider(true));
+        if (SceneManager.GetActiveScene().name == "Classroom1")
+        {
+            StartCoroutine(TSlider(true));
+        }
         //downArrow = Instantiate(Resources.Load("Prefabs/Down_Arrow", typeof(Image))) as Image;
     }
 	

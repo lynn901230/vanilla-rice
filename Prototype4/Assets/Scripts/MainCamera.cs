@@ -3,24 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainCamera : MonoBehaviour {
     // Use this for initialization
-    private ButtonClick buttonClick;
+    private ButtonClick _buttonClick;
     private List<string> _namelist = new List<string>();
     public GameObject targetObject;
     public GameObject enemy2;
+    public bool button_flag; //ボタン押しのフラグ
     private int j = 0, k = 0;
     int speed = 1;
     public GameObject desk;
     public string objectName = null;
     public string clickedObj;
+    public float time_cnt = 0;//オブジェクト移動時間のカウント
     // rayが届く範囲
-    public float distance = 10000f;
+    public float distance = 100f;
 
     public void Start () {
-        buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
-        _namelist = buttonClick.namelist;
+        Debug.Log(SceneManager.GetActiveScene().name);
+        _buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
+        _namelist = _buttonClick.namelist;
         //GameObject hero = GameObject.Find("self");
 
         //主人公カメラ視点設定
@@ -37,7 +41,7 @@ public class MainCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        bool temp = EventSystem.current.IsPointerOverGameObject(); //マウスカーソルがuGUIにあるかどうか
+        bool temp = EventSystem.current.IsPointerOverGameObject(); //マウスカーソルがuGUIにあるかどうか（パネル状態でオブジェクト選択を回避するため）
         if (!temp)
         {
             // 左クリックを取得
@@ -55,6 +59,7 @@ public class MainCamera : MonoBehaviour {
                     clickedObj = hit.collider.gameObject.tag;
                     desk = GameObject.Find(objectName);
                     Debug.Log(clickedObj);
+                    button_flag = true;//オブジェクトを選択してからstartボタンが実行可能
                 }
                 else
                 {
@@ -66,6 +71,7 @@ public class MainCamera : MonoBehaviour {
                     //Debug.Log(desk);
                 }
                 targetObject = desk;
+                Debug.Log(targetObject.name);
             }
         }
     }
@@ -75,6 +81,7 @@ public class MainCamera : MonoBehaviour {
     {
         if (constructCode(_namelist)) Debug.Log("OK!!!");
         else Debug.Log("NG!!!");
+        time_cnt = 0;
     }
 
     //単独処理
@@ -84,14 +91,17 @@ public class MainCamera : MonoBehaviour {
         if (number == "50")
         {
             targetObject.transform.position += new Vector3(1, 0, 0);
+            time_cnt++;
         }//50の処理をするunity側のコードを記述 straight
         else if (number == "51")
         {
             targetObject.transform.position += new Vector3(0, 0, 0.75f);
+            time_cnt++;
         }//51の処理をするunity側のコードを記述 left
         else if (number == "52")
         {
             targetObject.transform.position += new Vector3(0, 0, -0.75f);
+            time_cnt++;
         }//52の処理をするunity側のコードを記述 right
     }
 

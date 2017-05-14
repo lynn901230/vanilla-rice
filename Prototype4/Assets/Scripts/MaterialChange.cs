@@ -15,7 +15,6 @@ public class MaterialChange : MonoBehaviour {
     // Update is called once per frame 
     void Update()
     {
-
         if (_clicked_obj.objectName == gameObject.name)
         {
             this.GetComponent<Renderer>().material = _material[1];
