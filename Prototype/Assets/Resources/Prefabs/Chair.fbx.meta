@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 41c641bbea9867348a97c5fd40355e29
+timeCreated: 1481531874
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ChairBackMesh
+    100004: ChairBodyMesh
+    100006: ChairLegMesh
+    100008: ChairRubberMesh
+    100010: ChairViseMesh
+    100012: UCX_ChairBackMesh_01
+    100014: UCX_ChairBodyMesh_01
+    100016: UCX_ChairLegMesh_01
+    100018: UCX_ChairLegMesh_02
+    100020: UCX_ChairLegMesh_03
+    100022: UCX_ChairLegMesh_04
+    400000: //RootNode
+    400002: ChairBackMesh
+    400004: ChairBodyMesh
+    400006: ChairLegMesh
+    400008: ChairRubberMesh
+    400010: ChairViseMesh
+    400012: UCX_ChairBackMesh_01
+    400014: UCX_ChairBodyMesh_01
+    400016: UCX_ChairLegMesh_01
+    400018: UCX_ChairLegMesh_02
+    400020: UCX_ChairLegMesh_03
+    400022: UCX_ChairLegMesh_04
+    2300000: ChairBackMesh
+    2300002: ChairBodyMesh
+    2300004: ChairLegMesh
+    2300006: ChairRubberMesh
+    2300008: ChairViseMesh
+    2300010: UCX_ChairBackMesh_01
+    2300012: UCX_ChairBodyMesh_01
+    2300014: UCX_ChairLegMesh_01
+    2300016: UCX_ChairLegMesh_02
+    2300018: UCX_ChairLegMesh_03
+    2300020: UCX_ChairLegMesh_04
+    3300000: ChairBackMesh
+    3300002: ChairBodyMesh
+    3300004: ChairLegMesh
+    3300006: ChairRubberMesh
+    3300008: ChairViseMesh
+    3300010: UCX_ChairBackMesh_01
+    3300012: UCX_ChairBodyMesh_01
+    3300014: UCX_ChairLegMesh_01
+    3300016: UCX_ChairLegMesh_02
+    3300018: UCX_ChairLegMesh_03
+    3300020: UCX_ChairLegMesh_04
+    4300000: UCX_ChairLegMesh_01
+    4300002: UCX_ChairBodyMesh_01
+    4300004: UCX_ChairBackMesh_01
+    4300006: UCX_ChairLegMesh_02
+    4300008: UCX_ChairLegMesh_03
+    4300010: UCX_ChairLegMesh_04
+    4300012: ChairRubberMesh
+    4300014: ChairViseMesh
+    4300016: ChairBodyMesh
+    4300018: ChairBackMesh
+    4300020: ChairLegMesh
+    6400000: ChairBackMesh
+    6400002: ChairBodyMesh
+    6400004: ChairLegMesh
+    6400006: ChairRubberMesh
+    6400008: ChairViseMesh
+    6400010: UCX_ChairBackMesh_01
+    6400012: UCX_ChairBodyMesh_01
+    6400014: UCX_ChairLegMesh_01
+    6400016: UCX_ChairLegMesh_02
+    6400018: UCX_ChairLegMesh_03
+    6400020: UCX_ChairLegMesh_04
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
