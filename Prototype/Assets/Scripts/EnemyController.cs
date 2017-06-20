@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour {
     private MainCamera _maincamera;
     public Slider enemyHPBar;
+	public bool attack_flag = false;
     public float enemyhp = 100;
     public float enemy_damage;
     // Use this for initialization
@@ -24,6 +25,11 @@ public class EnemyController : MonoBehaviour {
         //    missile.GetComponent<Rigidbody>().useGravity = false;
         //    missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
         //}
+		if (attack_flag == true && enemyhp > 0) 
+		{
+			Invoke("Attack", .5f);
+			attack_flag = false;
+		}
 	}
     public void Shake(GameObject obj)
     {
@@ -34,16 +40,18 @@ public class EnemyController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Object")
         {
+			attack_flag = true;
             Destroy(other.gameObject);
             Shake(gameObject);
             enemy_damage = Random.Range(50, 51);
             enemyhp -= enemy_damage;
             GameObject enemydamageUI = Instantiate(Resources.Load("Prefabs/EnemyDamageUI", typeof(GameObject))) as GameObject;
             Destroy(enemydamageUI, 1);
-            if (enemyhp > 0)
-            {
-                Invoke("Attack", .5f);
-            }
+
+//            if (enemyhp > 0)
+//            {
+//                Invoke("Attack", .5f);
+//            }
         }
     }
 

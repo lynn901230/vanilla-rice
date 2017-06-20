@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour {
         {
             Destroy(other.gameObject);
             Shake(gameObject);
-            enemy_damage = Random.Range(34, 35);
+            enemy_damage = Random.Range(50, 51);
             enemyhp -= enemy_damage;
             GameObject enemydamageUI = Instantiate(Resources.Load("Prefabs/EnemyDamageUI", typeof(GameObject))) as GameObject;
             Destroy(enemydamageUI, 1);

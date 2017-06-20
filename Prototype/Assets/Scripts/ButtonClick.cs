@@ -11,36 +11,54 @@ public class ButtonClick : MonoBehaviour{
     [SerializeField]
     Text inventoryText;
     public List<string> namelist = new List<string>();
-    private MainCamera mainCamera;
+    private MainCamera _mainCamera;
     private EnemyController _enemy_attack;
+	private new Vector3 _movement;
+	public new Vector3 target_location;
 
     private void Start()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
+        _mainCamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
         _enemy_attack = GameObject.Find("Enemy").GetComponent<EnemyController>();
     }
+		
     public void OnClick()
     {
-        if (mainCamera.button_flag == true)
+		Debug.Log ("target: " + target_location);
+		Debug.Log (this.GetInstanceID());
+        if (_mainCamera.button_flag == true)
         {
-            mainCamera.button_flag = false;
+            _mainCamera.button_flag = false;
             foreach (Transform slotTransform in slots)
             {
                 GameObject item = slotTransform.GetComponent<Slot>().item;
                 if (item)
                 {
                     namelist.Add(item.name);
+					if (item.name == "50")
+					{
+						_movement += new Vector3(1, 0, 0);
+					}//50の処理をするunity側のコードを記述 straight
+					else if (item.name == "51")
+					{
+						_movement += new Vector3(0, 0, 0.75f);
+					}//51の処理をするunity側のコードを記述 left
+					else if (item.name == "52")
+					{
+						_movement += new Vector3(0, 0, -0.75f);
+					}//52の処理をするunity側のコードを記述 right
                 }
             }
-            mainCamera.Output();
-            //StartCoroutine();
-            namelist.Clear();
+//			Debug.Log (_mainCamera.targetObject.transform.position);
+			if (namelist.Count != 0) {
+				target_location = _movement + _mainCamera.desk.transform.position;
+				_movement = new Vector3 (0, 0, 0);
+				_mainCamera.Output ();
+				namelist.Clear ();
+			} 
+//			else {
+//				Debug.Log ("list is empty");
+//			}
         }
-    }
-    
-    private IEnumerator DelayMethod(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        _enemy_attack.Attack();
     }
 }

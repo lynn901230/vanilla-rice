@@ -20,6 +20,11 @@ public class MainCamera : MonoBehaviour {
     public float time_cnt = 0;//オブジェクト移動時間のカウント
     // rayが届く範囲
     public float distance = 100f;
+	public float width = 0;
+	public float depth = 0;
+	public Vector3 ObjtargetPos; //目標位置
+	public Vector3 StartPos; //スタート位置
+	bool testflag = false;
 
     public void Start () {
         Debug.Log(SceneManager.GetActiveScene().name);
@@ -47,6 +52,7 @@ public class MainCamera : MonoBehaviour {
             // 左クリックを取得
             if (Input.GetMouseButtonDown(0))
             {
+				testflag = true;
                 // クリックしたスクリーン座標をrayに変換
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 // Rayの当たったオブジェクトの情報を格納する
@@ -64,45 +70,68 @@ public class MainCamera : MonoBehaviour {
                 else
                 {
                     clickedObj = hit.collider.gameObject.tag;
-                    Debug.Log(clickedObj);
+					//Debug.Log (clickedObj);
                     //clickedObj = LayerMask.LayerToName(hit.collider.gameObject.layer);
                     objectName = null;
                     desk = null;
                     //Debug.Log(desk);
                 }
                 targetObject = desk;
-                Debug.Log(targetObject.name);
+				StartPos = targetObject.transform.position;
+				ObjtargetPos = StartPos;
+				Debug.Log (targetObject.name + " startpos: " + StartPos);
+//				Vector3 test_pos = new Vector3 (targetObject.transform.position.x + 1,
+//					                   targetObject.transform.position.y + 1,
+//					                   targetObject.transform.position.z + 1);
+//				Debug.Log (test_pos);
             }
         }
+		if (testflag == true && targetObject.transform.position == ObjtargetPos) {
+			Debug.Log ("same" + ObjtargetPos);
+			testflag = false;
+		}
     }
 
     //出力処理
     public void Output()
     {
-        if (constructCode(_namelist)) Debug.Log("OK!!!");
-        else Debug.Log("NG!!!");
+		
+		if (constructCode (_namelist)) {
+			//testflag = true;
+			//Debug.Log ("OK!!!");
+		} else {
+			Debug.Log ("NG!!!");
+		}
         time_cnt = 0;
+//		depth = 0; //位置判定パラメータx初期化
+//		width = 0; //位置判定パラメータz初期化
     }
 
     //単独処理
     public IEnumerator function(string number)
-    {
-        yield return new WaitForSeconds(speed / 10f * j + k / 2f);//           Debug.Log(speed / 5f * (j + 1) * (k + 1));
-        if (number == "50")
+	{
+		if (number == "50")//50の処理をするunity側のコードを記述 straight
         {
             targetObject.transform.position += new Vector3(1, 0, 0);
-            time_cnt++;
-        }//50の処理をするunity側のコードを記述 straight
-        else if (number == "51")
+            time_cnt++;			//depth++;
+			ObjtargetPos.x +=1f;
+        }
+		else if (number == "51")//51の処理をするunity側のコードを記述 left
         {
             targetObject.transform.position += new Vector3(0, 0, 0.75f);
             time_cnt++;
-        }//51の処理をするunity側のコードを記述 left
-        else if (number == "52")
+			ObjtargetPos.z +=0.75f;
+			//width++;
+        }
+		else if (number == "52")//52の処理をするunity側のコードを記述 right
         {
             targetObject.transform.position += new Vector3(0, 0, -0.75f);
             time_cnt++;
-        }//52の処理をするunity側のコードを記述 right
+			ObjtargetPos.z -=0.75f;
+			//width--;
+        }
+		yield return new WaitForSeconds(speed / 10f * j + k / 2f);//           Debug.Log(speed / 5f * (j + 1) * (k + 1));
+		testflag = true;
     }
 
     //for文処理
@@ -165,6 +194,9 @@ public class MainCamera : MonoBehaviour {
         }
         j = 0;
         k = 0;
+//		ObjtargetPos = new Vector3 (StartPos.x + depth * 1f, 
+//			StartPos.y, 
+//			StartPos.z + width * 0.75f);
         return true;
     }
 

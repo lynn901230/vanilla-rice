@@ -33,7 +33,7 @@ public class ButtonClick : MonoBehaviour{
                 }
             }
             mainCamera.Output();
-            //StartCoroutine();
+            StartCoroutine("DelayMethod",.5f);
             namelist.Clear();
         }
     }

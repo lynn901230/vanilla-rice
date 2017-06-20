@@ -8,11 +8,13 @@ using UnityEngine.SceneManagement;
 public class MainCamera : MonoBehaviour {
     // Use this for initialization
     private ButtonClick _buttonClick;
+	private EnemyController _eneCtrl;
     private List<string> _namelist = new List<string>();
     public GameObject targetObject;
     public GameObject enemy2;
     public bool button_flag; //ボタン押しのフラグ
     private int j = 0, k = 0;
+	public bool move_flag = false;
     int speed = 1;
     public GameObject desk;
     public string objectName = null;
@@ -24,6 +26,7 @@ public class MainCamera : MonoBehaviour {
     public void Start () {
         Debug.Log(SceneManager.GetActiveScene().name);
         _buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
+		_eneCtrl = GameObject.Find("Enemy").GetComponent<EnemyController>();
         _namelist = _buttonClick.namelist;
         //GameObject hero = GameObject.Find("self");
 
@@ -41,6 +44,16 @@ public class MainCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		if(targetObject != null && move_flag == true)
+		{
+			Debug.Log (_buttonClick.target_location == targetObject.transform.position);
+			if(_buttonClick.target_location == targetObject.transform.position){
+				move_flag = false;
+				_buttonClick.target_location = new Vector3 (0, 0, 0);
+				_eneCtrl.attack_flag = true;
+			}
+		}
+
         bool temp = EventSystem.current.IsPointerOverGameObject(); //マウスカーソルがuGUIにあるかどうか（パネル状態でオブジェクト選択を回避するため）
         if (!temp)
         {
@@ -58,7 +71,7 @@ public class MainCamera : MonoBehaviour {
                     objectName = hit.collider.gameObject.name;
                     clickedObj = hit.collider.gameObject.tag;
                     desk = GameObject.Find(objectName);
-                    Debug.Log(clickedObj);
+//					Debug.Log ("name:" + clickedObj + " location:" + desk.transform.position);
                     button_flag = true;//オブジェクトを選択してからstartボタンが実行可能
                 }
                 else
@@ -71,7 +84,8 @@ public class MainCamera : MonoBehaviour {
                     //Debug.Log(desk);
                 }
                 targetObject = desk;
-                Debug.Log(targetObject.name);
+//                Debug.Log(targetObject.name);
+
             }
         }
     }
@@ -79,7 +93,10 @@ public class MainCamera : MonoBehaviour {
     //出力処理
     public void Output()
     {
-        if (constructCode(_namelist)) Debug.Log("OK!!!");
+		if (constructCode (_namelist)) {
+			Debug.Log ("OK!!!");
+			move_flag = true;
+		}
         else Debug.Log("NG!!!");
         time_cnt = 0;
     }
