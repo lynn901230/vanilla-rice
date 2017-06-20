@@ -71,21 +71,15 @@ public class MainCamera : MonoBehaviour {
                     objectName = hit.collider.gameObject.name;
                     clickedObj = hit.collider.gameObject.tag;
                     desk = GameObject.Find(objectName);
-//					Debug.Log ("name:" + clickedObj + " location:" + desk.transform.position);
                     button_flag = true;//オブジェクトを選択してからstartボタンが実行可能
                 }
                 else
                 {
                     clickedObj = hit.collider.gameObject.tag;
-                    Debug.Log(clickedObj);
-                    //clickedObj = LayerMask.LayerToName(hit.collider.gameObject.layer);
                     objectName = null;
                     desk = null;
-                    //Debug.Log(desk);
                 }
                 targetObject = desk;
-//                Debug.Log(targetObject.name);
-
             }
         }
     }

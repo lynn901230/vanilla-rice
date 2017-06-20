@@ -24,8 +24,6 @@ public class ButtonClick : MonoBehaviour{
 		
     public void OnClick()
     {
-		Debug.Log ("target: " + target_location);
-		Debug.Log (this.GetInstanceID());
         if (_mainCamera.button_flag == true)
         {
             _mainCamera.button_flag = false;
@@ -49,16 +47,12 @@ public class ButtonClick : MonoBehaviour{
 					}//52の処理をするunity側のコードを記述 right
                 }
             }
-//			Debug.Log (_mainCamera.targetObject.transform.position);
 			if (namelist.Count != 0) {
 				target_location = _movement + _mainCamera.desk.transform.position;
 				_movement = new Vector3 (0, 0, 0);
 				_mainCamera.Output ();
 				namelist.Clear ();
 			} 
-//			else {
-//				Debug.Log ("list is empty");
-//			}
         }
     }
 }

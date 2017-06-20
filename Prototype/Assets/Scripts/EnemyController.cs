@@ -18,13 +18,6 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         enemyHPBar.value = enemyhp;
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    GameObject missile = Instantiate(Resources.Load("Prefabs/missile", typeof(GameObject))) as GameObject;
-        //    missile.AddComponent<Rigidbody>();
-        //    missile.GetComponent<Rigidbody>().useGravity = false;
-        //    missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
-        //}
 		if (attack_flag == true && enemyhp > 0) 
 		{
 			Invoke("Attack", .5f);
@@ -47,11 +40,6 @@ public class EnemyController : MonoBehaviour {
             enemyhp -= enemy_damage;
             GameObject enemydamageUI = Instantiate(Resources.Load("Prefabs/EnemyDamageUI", typeof(GameObject))) as GameObject;
             Destroy(enemydamageUI, 1);
-
-//            if (enemyhp > 0)
-//            {
-//                Invoke("Attack", .5f);
-//            }
         }
     }
 
