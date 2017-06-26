@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonClick_Cp_1_1 : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
                 break;
 
             case 2:
-                Application.LoadLevel("classroom1");
+				SceneManager.LoadScene("Classroom_q1");
+//                Application.LoadLevel("classroom1");
                 break;
             default:
                 break;

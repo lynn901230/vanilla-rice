@@ -11,7 +11,7 @@ public class MainCamera : MonoBehaviour {
 	private EnemyController _eneCtrl;
     private List<string> _namelist = new List<string>();
     public GameObject targetObject;
-    public GameObject enemy2;
+    public GameObject enemy;
     public bool button_flag; //ボタン押しのフラグ
     private int j = 0, k = 0;
 	public bool move_flag = false;
@@ -23,6 +23,9 @@ public class MainCamera : MonoBehaviour {
     // rayが届く範囲
     public float distance = 100f;
 
+	public int time=100;
+	public string PathName="Path1";
+
     public void Start () {
         Debug.Log(SceneManager.GetActiveScene().name);
         _buttonClick = GameObject.Find("StartButton").GetComponent<ButtonClick>();
@@ -31,19 +34,26 @@ public class MainCamera : MonoBehaviour {
         //GameObject hero = GameObject.Find("self");
 
         //主人公カメラ視点設定
-        transform.position = new Vector3(-5, 2.7f, 1);
-        transform.rotation = Quaternion.Euler(20, 90, 0);
+		if (SceneManager.GetActiveScene ().name == "Classroom_q2") {
+			iTween.MoveTo (this.gameObject, iTween.Hash ("path", iTweenPath.GetPath (PathName), "time", time));
+		} else {
+			transform.position = new Vector3 (-5, 2.7f, 1);
+			transform.rotation = Quaternion.Euler (20, 90, 0);
+		}
 
-        enemy2 = GameObject.Find("Enemy");
-        //enemy2.name = "enemy2";
-        enemy2.AddComponent<Rigidbody>();
-        enemy2.GetComponent<Rigidbody>().useGravity = false;
-        enemy2.GetComponent<Rigidbody>().isKinematic = true;
+        enemy = GameObject.Find("Enemy");
+        //enemy.name = "enemy";
+        enemy.AddComponent<Rigidbody>();
+        enemy.GetComponent<Rigidbody>().useGravity = false;
+        enemy.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+		if (SceneManager.GetActiveScene ().name == "Classroom_q2") {
+			this.gameObject.transform.LookAt (enemy.transform);
+		}
 		if(targetObject != null && move_flag == true)
 		{
 			Debug.Log (_buttonClick.target_location == targetObject.transform.position);

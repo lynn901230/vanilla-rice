@@ -21,7 +21,7 @@ public class TutorialSlider : MonoBehaviour {
         tutorial_text = GameObject.Find("Tutorial_Text").GetComponent<Text>();
         tutorial_text.text = text_array[clickCnt];
         downArrow = GameObject.Find("Down_Arrow").GetComponent<Image>();
-        if (SceneManager.GetActiveScene().name == "Classroom1")
+        if (SceneManager.GetActiveScene().name == "Classroom_q1")
         {
             StartCoroutine(TSlider(true));
         }
