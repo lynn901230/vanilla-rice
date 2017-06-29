@@ -12,14 +12,13 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
 		switch (number) {
 
 		case 0:
-			SceneManager.LoadScene ("Classroom_q1");
+			SceneManager.LoadScene ("menu");
 			break;
 		case 1:
-//			Application.LoadLevel ("test");
+			SceneManager.LoadScene ("Player");
 			break;
 		case 2:
 			SceneManager.LoadScene ("Classroom_q1");
-//			Application.LoadLevel ("classroom1");
 			break;
 		default:
 			break;
