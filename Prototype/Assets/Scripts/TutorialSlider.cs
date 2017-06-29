@@ -14,7 +14,7 @@ public class TutorialSlider : MonoBehaviour {
     public Text tutorial_text;
     public Image downArrow;
     string[] text_array = { "ようこそ、コードの世界へ","チュートリアルを進めるには「OK」を押してください", "これは「start」ボタン",
-        "これは「reset」ボタン", "これは「coding」ボタン", "一回押すとコーディングパネルが召喚され",
+        "これは「coding」ボタン", "一回押すとコーディングパネルが召喚され",
         "もう一回押すとパネルが帰還する","さあ、冒険を始めよう" };
     // Use this for initialization
     void Start () {
@@ -63,19 +63,19 @@ public class TutorialSlider : MonoBehaviour {
         if(clickCnt == 2)
         {            
             //downArrow.transform.SetParent(transform,true);
-            downArrow.transform.localPosition = new Vector3(-330,-200,0);
+            downArrow.transform.localPosition = new Vector3(-330,-150,0);
         }
         if (clickCnt == 3)
         {
-            downArrow.transform.localPosition = new Vector3(-220, -200, 0);
+            downArrow.transform.localPosition = new Vector3(-220, -150, 0);
         }
-        if (clickCnt == 4)
-        {
-            downArrow.transform.localPosition = new Vector3(-110, -200, 0);
-        }
-        if (clickCnt == 7)
-        {
-            downArrow.transform.localPosition = new Vector3(-500, -200, 0);
-        }        
+//        if (clickCnt == 4)
+//        {
+//            downArrow.transform.localPosition = new Vector3(-110, -150, 0);
+//        }
+//        if (clickCnt == 7)
+//        {
+//            downArrow.transform.localPosition = new Vector3(-500, -150, 0);
+//        }        
     }
 }

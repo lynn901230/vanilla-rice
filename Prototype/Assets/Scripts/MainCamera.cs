@@ -57,6 +57,10 @@ public class MainCamera : MonoBehaviour {
         enemy.GetComponent<Rigidbody>().isKinematic = true;
     }
 
+	private void Back(){
+		targetObject.transform.position = _buttonClick.init_pos;
+	}
+
     // Update is called once per frame
     void Update()
     {
@@ -70,6 +74,7 @@ public class MainCamera : MonoBehaviour {
 				move_flag = false;
 				_buttonClick.target_pos = new Vector3 (0, 0, 0);
 				_eneCtrl.attack_flag = true;
+				Invoke("Back",.5f);
 			}
 		}
 

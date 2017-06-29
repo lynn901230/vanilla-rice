@@ -16,7 +16,7 @@ public class ButtonClick : MonoBehaviour{
 	private Vector3 _movement;
 	public Vector3 target_pos;
 	public Vector3 init_pos;
-	private Vector3[] path;
+	private Vector3[] _path;
 
 
     private void Start()
