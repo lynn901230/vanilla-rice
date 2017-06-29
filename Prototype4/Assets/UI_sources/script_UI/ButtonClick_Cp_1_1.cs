@@ -19,7 +19,7 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
                 break;
 
             case 2:
-                Application.LoadLevel("classroom");
+                Application.LoadLevel("classroom1");
                 break;
             default:
                 break;

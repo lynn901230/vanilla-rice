@@ -4,24 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour {
-
+    private MainCamera _maincamera;
     public Slider enemyHPBar;
     public float enemyhp = 100;
+    public float enemy_damage;
     // Use this for initialization
     void Start () {
+        _maincamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
         enemyHPBar = GameObject.Find("enemyHPSlider").GetComponent<Slider>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         enemyHPBar.value = enemyhp;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GameObject missile = Instantiate(Resources.Load("Prefabs/missile", typeof(GameObject))) as GameObject;
-            missile.AddComponent<Rigidbody>();
-            missile.GetComponent<Rigidbody>().useGravity = false;
-            missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
-        }
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    GameObject missile = Instantiate(Resources.Load("Prefabs/missile", typeof(GameObject))) as GameObject;
+        //    missile.AddComponent<Rigidbody>();
+        //    missile.GetComponent<Rigidbody>().useGravity = false;
+        //    missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
+        //}
 	}
     public void Shake(GameObject obj)
     {
@@ -32,11 +34,26 @@ public class EnemyController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Object")
         {
-            Shake(gameObject);
-            float damage = Random.Range(30, 51);
-            enemyhp -= damage;
             Destroy(other.gameObject);
+            Shake(gameObject);
+            enemy_damage = Random.Range(50, 51);
+            enemyhp -= enemy_damage;
+            GameObject enemydamageUI = Instantiate(Resources.Load("Prefabs/EnemyDamageUI", typeof(GameObject))) as GameObject;
+            Destroy(enemydamageUI, 1);
+            if (enemyhp > 0)
+            {
+                Invoke("Attack", .5f);
+            }
         }
+    }
+
+    public void Attack()
+    {
+        GameObject missile = Instantiate(Resources.Load("Prefabs/missile", typeof(GameObject))) as GameObject;
+        missile.AddComponent<Rigidbody>();
+        missile.GetComponent<Rigidbody>().useGravity = false;
+        missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
+        _maincamera.button_flag = true;
     }
 
 }
