@@ -5,11 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype4", "Assembly-CSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype4", "Assembly-CSharp.csproj", "{8B7B1181-389B-F393-D088-AB81A6B0410E}"
 EndProject
-<<<<<<< HEAD
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype4", "Assembly-CSharp-Editor-firstpass.csproj", "{85BEEA3A-3B33-0F98-FB3B-CFF54CA6922F}"
 EndProject
->>>>>>> BattleSystem
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,13 +21,10 @@ Global
 		{8B7B1181-389B-F393-D088-AB81A6B0410E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B7B1181-389B-F393-D088-AB81A6B0410E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B7B1181-389B-F393-D088-AB81A6B0410E}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-=======
 		{85BEEA3A-3B33-0F98-FB3B-CFF54CA6922F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85BEEA3A-3B33-0F98-FB3B-CFF54CA6922F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85BEEA3A-3B33-0F98-FB3B-CFF54CA6922F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85BEEA3A-3B33-0F98-FB3B-CFF54CA6922F}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> BattleSystem
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
