@@ -12,18 +12,22 @@ public class ButtonClick : MonoBehaviour{
     Text inventoryText;
     public List<string> namelist = new List<string>();
     private MainCamera _mainCamera;
-    private EnemyController _enemy_attack;
-	private new Vector3 _movement;
-	public new Vector3 target_location;
+//    private EnemyController _enemy_attack;
+	private Vector3 _movement;
+	public Vector3 target_pos;
+	public Vector3 init_pos;
+	private Vector3[] path;
+
 
     private void Start()
     {
         _mainCamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
-        _enemy_attack = GameObject.Find("Enemy").GetComponent<EnemyController>();
+//        _enemy_attack = GameObject.Find("Enemy").GetComponent<EnemyController>();
     }
 		
     public void OnClick()
     {
+		Debug.Log (init_pos);
         if (_mainCamera.button_flag == true)
         {
             _mainCamera.button_flag = false;
@@ -48,7 +52,7 @@ public class ButtonClick : MonoBehaviour{
                 }
             }
 			if (namelist.Count != 0) {
-				target_location = _movement + _mainCamera.desk.transform.position;
+				target_pos = _movement + _mainCamera.desk.transform.position;
 				_movement = new Vector3 (0, 0, 0);
 				_mainCamera.Output ();
 				namelist.Clear ();

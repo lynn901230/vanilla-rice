@@ -5,6 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+//public class SceneQ1{
+//
+//}
+//
+//public class SceneQ2{
+//	
+//}
+
 public class MainCamera : MonoBehaviour {
     // Use this for initialization
     private ButtonClick _buttonClick;
@@ -12,7 +20,7 @@ public class MainCamera : MonoBehaviour {
     private List<string> _namelist = new List<string>();
     public GameObject targetObject;
     public GameObject enemy;
-    public bool button_flag; //ボタン押しのフラグ
+    public bool button_flag; //スタートボタン押し可のフラグ
     private int j = 0, k = 0;
 	public bool move_flag = false;
     int speed = 1;
@@ -23,7 +31,7 @@ public class MainCamera : MonoBehaviour {
     // rayが届く範囲
     public float distance = 100f;
 
-	public int time=100;
+	public int time;
 	public string PathName="Path1";
 
     public void Start () {
@@ -36,6 +44,7 @@ public class MainCamera : MonoBehaviour {
         //主人公カメラ視点設定
 		if (SceneManager.GetActiveScene ().name == "Classroom_q2") {
 			iTween.MoveTo (this.gameObject, iTween.Hash ("path", iTweenPath.GetPath (PathName), "time", time));
+			iTween.RotateTo (this.gameObject, iTween.Hash ("x", 20, "y", 90, "z", 0, "time", time));
 		} else {
 			transform.position = new Vector3 (-5, 2.7f, 1);
 			transform.rotation = Quaternion.Euler (20, 90, 0);
@@ -51,15 +60,15 @@ public class MainCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (SceneManager.GetActiveScene ().name == "Classroom_q2") {
-			this.gameObject.transform.LookAt (enemy.transform);
-		}
+//		if (SceneManager.GetActiveScene ().name == "Classroom_q2") {
+//			this.gameObject.transform.LookAt (enemy.transform);
+//		}
 		if(targetObject != null && move_flag == true)
 		{
-			Debug.Log (_buttonClick.target_location == targetObject.transform.position);
-			if(_buttonClick.target_location == targetObject.transform.position){
+//			Debug.Log (_buttonClick.target_pos == targetObject.transform.position);
+			if(_buttonClick.target_pos == targetObject.transform.position){
 				move_flag = false;
-				_buttonClick.target_location = new Vector3 (0, 0, 0);
+				_buttonClick.target_pos = new Vector3 (0, 0, 0);
 				_eneCtrl.attack_flag = true;
 			}
 		}
@@ -82,6 +91,7 @@ public class MainCamera : MonoBehaviour {
                     clickedObj = hit.collider.gameObject.tag;
                     desk = GameObject.Find(objectName);
                     button_flag = true;//オブジェクトを選択してからstartボタンが実行可能
+					_buttonClick.init_pos = desk.transform.position;
                 }
                 else
                 {
@@ -93,6 +103,11 @@ public class MainCamera : MonoBehaviour {
             }
         }
     }
+
+	public void Output2(){
+		
+
+	}
 
     //出力処理
     public void Output()
@@ -188,6 +203,5 @@ public class MainCamera : MonoBehaviour {
         k = 0;
         return true;
     }
-
 
 }
