@@ -19,6 +19,21 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
 			NovelSingleton.StatusManager.callJoker("wide/scene1","");
 			break;
 		case 2:
+			NovelSingleton.StatusManager.callJoker("wide/scene2","");
+			break;
+		case 3:
+			SceneManager.LoadScene ("Classroom_q1");
+			break;
+		case 4:
+			NovelSingleton.StatusManager.callJoker("wide/scene3","");
+			break;
+		case 5:
+			SceneManager.LoadScene ("Classroom_q2");
+			break;
+		case 6:
+			NovelSingleton.StatusManager.callJoker("wide/scene4","");
+			break;
+		case 7:
 			SceneManager.LoadScene ("Classroom_q1");
 			break;
 		default:
