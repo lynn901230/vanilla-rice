@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Novel;
 
 public class ButtonClick_Cp_1_1 : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class ButtonClick_Cp_1_1 : MonoBehaviour
 			SceneManager.LoadScene ("menu");
 			break;
 		case 1:
-			SceneManager.LoadScene ("Player");
+			NovelSingleton.StatusManager.callJoker("wide/scene1","");
 			break;
 		case 2:
 			SceneManager.LoadScene ("Classroom_q1");
