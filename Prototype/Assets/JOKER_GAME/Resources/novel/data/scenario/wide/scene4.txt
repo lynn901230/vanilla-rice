@@ -11,7 +11,15 @@
 [call file=wide/libs/utils]
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"]
+;背景の新規定義
+[bg_new storage="room"]
 
+;背景の表示
+[bg_show ]
+[chara_new name=risa storage=risa  scale="1.4" y=-4 x=-2.5]
+[show name=risa]
+[chara_new name=yajima storage=yajima  scale="1.4" y=-4 x=2.5]
+[show name=yajima]
 [wait time=1]
 #矢島
 すごいな。君。コードをこんなに使えるなんて。[p]
@@ -21,9 +29,9 @@
 あ、ありがとうございます。[p]
 #矢島
 とりあえず、生徒会室に移動しよう。[p]
- 
-場転
- 
+
+[bg_mod storage="seitokaishitu_hiru"]
+
 #矢島
 ということで、生徒会室に来てもらったわけだけど[p]
 #僕
@@ -57,5 +65,6 @@
 わかりました。やってみます。[p]
 #矢島
 ありがとう、じゃあ、今日は保健室で寝てもらって、明日から早速お願いするよ。[p]
-
+[scene file="Scene/Chapter1" ]
+[s]
 

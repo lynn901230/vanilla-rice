@@ -13,17 +13,25 @@
 [text_show name="_sp_chara_name"]
 
 *2
-事件発生から3日後　午後。[r][l]
-保健室。[p]
+事件発生から3日後　午後。[p]
  
 #僕
 （ここはどこだ？[r][l]
 白い天井、カーテン、ベッドに寝ている？）[p]
  
 カシャ[p]
- 
+;背景の新規定義
+[bg_new storage="hokenshitu_hiru"]
+
+;背景の表示
+[bg_show time=0.5]
+
 #僕
 わぁ！[p]
+;キャラクターの宣言 
+[chara_new name=risa storage=risa  scale="1.4" y=-4]
+;キャラクターを表示
+[show name=risa]
 #胡桃
 わぁ、びっくりした。起きてたんだ[p]
 #僕
@@ -49,7 +57,8 @@
 #胡桃
 ちょっと教室の方歩いてみようか、そしたら思い出すかも。[p]
 
-場転 廊下(夜)
+[bg_mod storage="rouka"]
+[anim name="risa" x=3 type="easeInOutCirc"]
  
 #胡桃
 もう７時だし、みんな帰っちゃったけど。[r][l]
@@ -57,7 +66,7 @@
 #僕
 うん。正直何も。[p]
  
-場転 教室
+[bg_mod storage="room"]
  
 #胡桃
 ここが1年生の教室で…あ、ウイルス！[p]

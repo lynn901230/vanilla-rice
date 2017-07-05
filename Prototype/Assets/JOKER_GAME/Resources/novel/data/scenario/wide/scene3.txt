@@ -11,7 +11,15 @@
 [call file=wide/libs/utils]
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"]
+;背景の新規定義
+[bg_new storage="room"]
 
+;背景の表示
+[bg_show ]
+;キャラクターの宣言 
+[chara_new name=risa storage=risa  scale="1.4" y=-4]
+;キャラクターを表示
+[show name=risa]
 [wait time=1]
 #胡桃
 やった！上手だね！[p]
@@ -39,10 +47,17 @@
 矢島くん？[p]
 #胡桃
 私、生徒会の副会長なんだけど、生徒会長が矢島って人で…[p]
+;キャラクターの宣言 
+[chara_new name=yajima storage=yajima  scale="1.4" y=-4 x=4]
+;キャラクターを表示
+[show name=yajima]
 #矢島
 やぁ、胡桃さんと、朝倒れていた人[p]
 #胡桃
-矢島くん。噂をすればだね。彼、記憶がないんだって[p]。
+矢島くん。噂をすればだね。[r][l]
+[anim name="risa" x=-2.5 type="easeInOutCirc"]
+[anim name="yajima" x=2.5 type="easeInOutCirc"]
+彼、記憶がないんだって[p]。
 #僕
 は、はじめまして。
 #矢島
