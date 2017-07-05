@@ -1,8 +1,10 @@
 ﻿;チュートリアル用スクリプトファイル
-
+@text_new name="title" val="事件発生から3日後　午後。" x=0 y=0 scale=2
+;テキストの表示
+@text_show name="title" time=6
+@text_remove name="title"
 ;メッセージ表示
 [showmessage]
-
 ;共通ライブラリ
 ;セーブ・ロードバックログなど基本的な機能を取り込む 
 [call file=wide/system target="*system_setting_buttons"]
@@ -11,8 +13,6 @@
 [call file=wide/libs/utils]
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"]
-
-事件発生から3日後　午後。[p]
  
 #僕
 （ここはどこだ？[r][l]

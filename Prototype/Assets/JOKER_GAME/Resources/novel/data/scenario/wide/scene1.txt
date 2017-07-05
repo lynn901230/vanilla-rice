@@ -1,5 +1,8 @@
 ;チュートリアル用スクリプトファイル
-
+@text_new name="title" val="事件発生から7日後　教室" x=0 y=0 scale=2
+;テキストの表示
+@text_show name="title" time=6
+@text_remove name="title"
 ;メッセージ表示
 [showmessage]
 
@@ -13,9 +16,6 @@
 [text_show name="_sp_chara_name"]
 
 [wait time=1]
-事件発生から7日後[r][l]
-教室。[p]
-
 #僕
 やっと分かったよ。君が犯人だったのか。[r][l]
 みんなをどうしたんだ？みんなはどこにいる？[p]
