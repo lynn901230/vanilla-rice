@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PanelSlider : MonoBehaviour
 {
@@ -13,20 +14,34 @@ public class PanelSlider : MonoBehaviour
 	public bool button_clicked = false;
 
 	void Start(){
-		_TS = GameObject.Find ("Tutorial").GetComponent<TutorialSlider> ();
+		if (SceneManager.GetActiveScene ().name == "Classroom_q1") {
+			_TS = GameObject.Find ("Tutorial").GetComponent<TutorialSlider> ();
+		}
 	}
 
     // スライドイン
     public void Slider()
     {
-		if (_TS.Button_flag == true) {
+		if (SceneManager.GetActiveScene ().name == "Classroom_q1") {
+			if (_TS.Button_flag == true) {
+				clickcnt++;
+				button_clicked = true;
+				if (clickcnt % 2 == 1) {
+					StartCoroutine (StartSlidePanel (true));
+				}
+        // スライドアウト
+       			else {
+					StartCoroutine (StartSlidePanel (false));
+				}
+			}
+		} else {
 			clickcnt++;
 			button_clicked = true;
 			if (clickcnt % 2 == 1) {
 				StartCoroutine (StartSlidePanel (true));
 			}
-        // スライドアウト
-        else {
+			// スライドアウト
+			else {
 				StartCoroutine (StartSlidePanel (false));
 			}
 		}
