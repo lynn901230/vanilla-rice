@@ -57,21 +57,21 @@ public class TutorialSlider : MonoBehaviour {
 			downArrow.transform.localPosition = new Vector3 (-400, -400, 0);
 			break;
 		case 1:
-			downArrow.transform.localPosition = new Vector3 (-55, 175, 0);
+			downArrow.transform.localPosition = new Vector3 (-35, 85, 0);
 			if (MCforTS.targetObject.transform.name == "obj2_q1") {
 				TS_flag = 0;
 				StartCoroutine (TSlider (true));
 			}
 			break;
 		case 2:
-			downArrow.transform.localPosition = new Vector3 (-330, -175, 0);
+			downArrow.transform.localPosition = new Vector3 (-330, -180, 0);
 			if (_start_btn.start_clicked == true & MCforTS.targetObject == null) {
 				TS_flag = 0;
 				StartCoroutine (TSlider (true));
 			}
 			break;
 		case 3			:
-			downArrow.transform.localPosition = new Vector3 (-220, -175, 0);
+			downArrow.transform.localPosition = new Vector3 (-220, -180, 0);
 			Button_flag = true;
 			if (PS.button_clicked == true) {
 				PS.button_clicked = false;
