@@ -57,7 +57,11 @@ public class TutorialSlider : MonoBehaviour {
 			downArrow.transform.localPosition = new Vector3 (-400, -400, 0);
 			break;
 		case 1:
+<<<<<<< HEAD
 			downArrow.transform.localPosition = new Vector3 (-40, 85, 0);
+=======
+			downArrow.transform.localPosition = new Vector3 (-35, 85, 0);
+>>>>>>> BattleSystem
 			if (MCforTS.targetObject.transform.name == "obj2_q1") {
 				TS_flag = 0;
 				StartCoroutine (TSlider (true));
