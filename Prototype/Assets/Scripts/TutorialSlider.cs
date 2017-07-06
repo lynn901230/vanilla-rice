@@ -9,17 +9,34 @@ public class TutorialSlider : MonoBehaviour {
     public float t_duration = 1.0f;    // スライド時間（秒）
     public Vector3 t_inPosition;      // スライドイン後の位置
     public Vector3 t_outPosition;      //スライドアウト後の位置
-    private EnemyController _enemy;
+//    private EnemyController _enemy;
+	public MainCamera MCforTS;
+	public bool Button_flag = false; //ボタン押しフラグ
     public int clickCnt = 0;
     public Text tutorial_text;
     public Image downArrow;
-	public int arrow_flag = 0;// {1:"obj",2:"startbt",3:"codebt"};
-	string[] text_array = { "コードでの戦い方について説明するよ","まず、動かす机を選ぶよ。", "この机を選ぼう。",
-        "これは「coding」ボタン", "一回押すとコーディングパネルが召喚され",
-        "もう一回押すとパネルが帰還する","さあ、冒険を始めよう" };
+	public PanelSlider PS;
+	private bool _cps_flag;
+	private ButtonClick _start_btn;
+	private EnemyController _enemy_ctrl;
+
+	public int TS_flag = 0;//チュートリアル進行フラグ
+	// {0:"out",1:"obj",2:"startbt",3:"codebt",4:"you win"};
+	string[] text_array = { "コードでの戦い方について説明するよ", "まず、動かす机を選ぶよ。", "この机を選ぼう。",
+		"次に机の動き方をプログラミングするよ。", "Codeボタンを押そう。",
+		"obj.frontで前、obj.rightで右、\nobj.leftで左に動くよ。", "obj.rightとobj.frontを選んで\n下のパネルに持ってこよう。",
+		"できたら、もう一度Codeボタンを押そう。", "スタートで攻撃できるよ","その調子！頑張って！","勝ったわ！おめでとう！"
+	};//length 9
     // Use this for initialization
     void Start () {
+		if(SceneManager.GetActiveScene ().name != "Classroom_q1"){
+			Button_flag = true;
+		}
+		MCforTS = GameObject.Find ("Main Camera").GetComponent<MainCamera> ();
         tutorial_text = GameObject.Find("Tutorial_Text").GetComponent<Text>();
+		PS = GameObject.Find ("CodingPanel").GetComponent<PanelSlider>();
+		_start_btn = GameObject.Find ("StartButton").GetComponent<ButtonClick> ();
+		_enemy_ctrl = GameObject.Find ("Enemy").GetComponent<EnemyController>();
         tutorial_text.text = text_array[clickCnt];
         downArrow = GameObject.Find("Down_Arrow").GetComponent<Image>();
         if (SceneManager.GetActiveScene().name == "Classroom_q1")
@@ -31,10 +48,39 @@ public class TutorialSlider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (clickCnt == text_array.Length)
-        {
-            StartCoroutine(TSlider(false));
-        }
+		if (_enemy_ctrl.enemyhp <= 0 & clickCnt != 12) {
+			StartCoroutine (TSlider (true));
+
+		}
+		switch(TS_flag){
+		case 0:
+			downArrow.transform.localPosition = new Vector3 (-400, -400, 0);
+			break;
+		case 1:
+			downArrow.transform.localPosition = new Vector3 (-55, 175, 0);
+			if (MCforTS.targetObject.transform.name == "obj2_q1") {
+				TS_flag = 0;
+				StartCoroutine (TSlider (true));
+			}
+			break;
+		case 2:
+			downArrow.transform.localPosition = new Vector3 (-330, -175, 0);
+			if (_start_btn.start_clicked == true & MCforTS.targetObject == null) {
+				TS_flag = 0;
+				StartCoroutine (TSlider (true));
+			}
+			break;
+		case 3			:
+			downArrow.transform.localPosition = new Vector3 (-220, -175, 0);
+			Button_flag = true;
+			if (PS.button_clicked == true) {
+				PS.button_clicked = false;
+				StartCoroutine (TSlider (true));
+				Button_flag = false;
+				TS_flag = 0;
+			}
+			break;
+		}
 	}
 
     public IEnumerator TSlider(bool slideFlag)
@@ -60,25 +106,40 @@ public class TutorialSlider : MonoBehaviour {
 
     public void OnClick()
     {
-        clickCnt++;
-        tutorial_text.text = text_array[clickCnt];
-        if(clickCnt == 3)
+		clickCnt++;
+		Debug.Log (clickCnt);
+		if (clickCnt == 12) {
+			SceneManager.LoadScene("Chapter1");
+		}
+		tutorial_text.text = text_array[clickCnt-1];
+        if(clickCnt == 4)
         {            
-//            downArrow.transform.localPosition = new Vector3(-330,-150,0);
 			StartCoroutine(TSlider(false));
-			arrow_flag = 1;
+			TS_flag = 1;
         }
-        if (clickCnt == 4)
+        if (clickCnt == 6)
         {
-            //downArrow.transform.localPosition = new Vector3(-220, -150, 0);
+			StartCoroutine(TSlider(false));
+			TS_flag = 3;
         }
-//        if (clickCnt == 4)
-//        {
-//            downArrow.transform.localPosition = new Vector3(-110, -150, 0);
-//        }
-//        if (clickCnt == 7)
-//        {
-//            downArrow.transform.localPosition = new Vector3(-500, -150, 0);
-//        }        
+        if (clickCnt == 9)
+        {
+			StartCoroutine(TSlider(false));
+			TS_flag = 3;
+        }
+		if (clickCnt == 10)
+        {
+			StartCoroutine(TSlider(false));
+			TS_flag = 2;
+        }
+		if (clickCnt == 11) {
+			StartCoroutine(TSlider(false));
+			TS_flag = 0;
+			Button_flag = true;
+		}
+//		if (clickCnt == 12) {
+//			StartCoroutine(TSlider(false));
+//		}
+//		tutorial_text.text = text_array[clickCnt-1];
     }
 }

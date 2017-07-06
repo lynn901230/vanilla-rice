@@ -17,7 +17,7 @@ public class ButtonClick : MonoBehaviour{
 	public Vector3 target_pos;
 	public Vector3 init_pos;
 	private Vector3[] _path;
-
+	public bool start_clicked = false;
 
     private void Start()
     {
@@ -26,8 +26,10 @@ public class ButtonClick : MonoBehaviour{
     }
 		
     public void OnClick()
-    {
-		Debug.Log (init_pos);
+	{
+		//Debug.Log (init_pos);
+		start_clicked = true;
+//		Debug.Log (start_clicked);
         if (_mainCamera.button_flag == true)
         {
             _mainCamera.button_flag = false;

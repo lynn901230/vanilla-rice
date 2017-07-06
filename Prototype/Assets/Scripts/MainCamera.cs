@@ -18,7 +18,7 @@ public class MainCamera : MonoBehaviour {
     private ButtonClick _buttonClick;
 	private EnemyController _eneCtrl;
     private List<string> _namelist = new List<string>();
-    public GameObject targetObject;
+	public GameObject targetObject;
     public GameObject enemy;
     public bool button_flag; //スタートボタン押し可のフラグ
     private int j = 0, k = 0;
@@ -58,7 +58,9 @@ public class MainCamera : MonoBehaviour {
     }
 
 	private void Back(){
-		targetObject.transform.position = _buttonClick.init_pos;
+		if (targetObject != null) {
+			targetObject.transform.position = _buttonClick.init_pos;
+		}
 	}
 
     // Update is called once per frame
