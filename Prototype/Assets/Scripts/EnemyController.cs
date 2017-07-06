@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour {
         GameObject missile = Instantiate(Resources.Load("Prefabs/missile", typeof(GameObject))) as GameObject;
         missile.AddComponent<Rigidbody>();
         missile.GetComponent<Rigidbody>().useGravity = false;
-        missile.GetComponent<Rigidbody>().velocity = transform.right * 15f;
+		missile.GetComponent<Rigidbody>().velocity = transform.forward * 15f;
         _maincamera.button_flag = true;
     }
 

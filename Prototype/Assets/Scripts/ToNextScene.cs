@@ -17,6 +17,6 @@ public class ToNextScene : MonoBehaviour {
 
     public void OnClick()
     {
-        SceneManager.LoadScene("Classroom_q2");
+        SceneManager.LoadScene("Chapter1");
     }
 }

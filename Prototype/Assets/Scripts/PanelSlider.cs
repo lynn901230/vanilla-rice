@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PanelSlider : MonoBehaviour
 {
@@ -9,20 +10,41 @@ public class PanelSlider : MonoBehaviour
     public Vector3 outPosition;      // スライドアウト後の位置
     public float duration = 1.0f;    // スライド時間（秒）
     public int clickcnt = 0;
+	private TutorialSlider _TS;
+	public bool button_clicked = false;
 
-    // スライドイン（Pauseボタンが押されたときに、これを呼ぶ）
+	void Start(){
+		if (SceneManager.GetActiveScene ().name == "Classroom_q1") {
+			_TS = GameObject.Find ("Tutorial").GetComponent<TutorialSlider> ();
+		}
+	}
+
+    // スライドイン
     public void Slider()
     {
-        clickcnt++;
-        if (clickcnt % 2 == 1)
-        {
-            StartCoroutine(StartSlidePanel(true));
-        }
+		if (SceneManager.GetActiveScene ().name == "Classroom_q1") {
+			if (_TS.Button_flag == true) {
+				clickcnt++;
+				button_clicked = true;
+				if (clickcnt % 2 == 1) {
+					StartCoroutine (StartSlidePanel (true));
+				}
         // スライドアウト
-        else
-        {
-            StartCoroutine(StartSlidePanel(false));
-        }
+       			else {
+					StartCoroutine (StartSlidePanel (false));
+				}
+			}
+		} else {
+			clickcnt++;
+			button_clicked = true;
+			if (clickcnt % 2 == 1) {
+				StartCoroutine (StartSlidePanel (true));
+			}
+			// スライドアウト
+			else {
+				StartCoroutine (StartSlidePanel (false));
+			}
+		}
     }
 
     private IEnumerator StartSlidePanel(bool isSlideIn)

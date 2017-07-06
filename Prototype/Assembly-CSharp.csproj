@@ -121,7 +121,6 @@
      <Compile Include="Assets\Scripts\ToBattleScene.cs" />
      <Compile Include="Assets\Scripts\ToCodingScene.cs" />
      <Compile Include="Assets\Scripts\ToNextScene.cs" />
-     <Compile Include="Assets\Scripts\TutorialCtrl.cs" />
      <Compile Include="Assets\Scripts\TutorialSlider.cs" />
      <Compile Include="Assets\Scripts\WLSlider.cs" />
      <Compile Include="Assets\UI_sources\Plugins\SimplyPopup\Popup.cs" />
