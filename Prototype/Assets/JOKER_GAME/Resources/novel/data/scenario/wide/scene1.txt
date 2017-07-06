@@ -1,0 +1,36 @@
+;チュートリアル用スクリプトファイル
+@text_new name="title" val="事件発生から7日後　教室" x=0 y=0 scale=2
+;テキストの表示
+@text_show name="title" time=6
+@text_remove name="title"
+;メッセージ表示
+[showmessage]
+
+;共通ライブラリ
+;セーブ・ロードバックログなど基本的な機能を取り込む 
+[call file=wide/system target="*system_setting_buttons"]
+
+;ゲーム作成で便利なマクロ集
+[call file=wide/libs/utils]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+[wait time=1]
+#僕
+やっと分かったよ。君が犯人だったのか。[r][l]
+みんなをどうしたんだ？みんなはどこにいる？[p]
+
+#??
+どこもここもない。[r][l]
+そもそも君はおかしいと思わなかったのか。[r][l]
+この学校を。この空間を。[p]
+
+#僕
+どういう意味だ。[p]
+
+#??
+なぜ、[l]なぜ君は記憶をなくしているのか。[r][l]
+なぜこの学校の生徒はコードなんていう特殊能力を持っているのか。[p]
+まだ君は、重要なことに気がついていない。[p]
+[scene file="Scene/Chapter1" ]
+[s]

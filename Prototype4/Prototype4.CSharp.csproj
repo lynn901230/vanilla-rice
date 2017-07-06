@@ -350,6 +350,7 @@
     <Compile Include="Assets\UI_sources\Plugins\UniRx\Scripts\UnityWinRTBridge\ThreadPoolScheduler_UnityWinRT.cs" />
     <Compile Include="Assets\UI_sources\script_UI\ButtonClick_Cp_1_1.cs" />
     <Compile Include="Assets\UI_sources\script_UI\ButtonClick_menu.cs" />
+    <Compile Include="Assets\UI_sources\script_UI\menuText.cs" />
     <Compile Include="Assets\UI_sources\soundscript\BGMSlider.cs" />
     <Compile Include="Assets\UI_sources\soundscript\Volumectrl.cs" />
     <Compile Include="Assets\UI_sources\soundscript\chapter1sound.cs" />

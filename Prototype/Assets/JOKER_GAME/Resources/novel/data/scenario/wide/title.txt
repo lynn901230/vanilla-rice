@@ -1,0 +1,5 @@
+
+*title
+;タイトル画面
+[wait time=0.1]
+@jump file=wide/scene1 scene=new
