@@ -46,8 +46,8 @@ public class MainCamera : MonoBehaviour {
 			iTween.MoveTo (this.gameObject, iTween.Hash ("path", iTweenPath.GetPath (PathName), "time", time));
 			iTween.RotateTo (this.gameObject, iTween.Hash ("x", 20, "y", 90, "z", 0, "time", time));
 		} else {
-			transform.position = new Vector3 (-2, 2.7f, 1);
-			transform.rotation = Quaternion.Euler (40, 90, 0);
+			transform.position = new Vector3 (-5, 2.7f, 1);
+			transform.rotation = Quaternion.Euler (20, 90, 0);
 		}
 
         enemy = GameObject.Find("Enemy");
