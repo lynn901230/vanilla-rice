@@ -13,7 +13,8 @@ public class TutorialSlider : MonoBehaviour {
     public int clickCnt = 0;
     public Text tutorial_text;
     public Image downArrow;
-    string[] text_array = { "ようこそ、コードの世界へ","チュートリアルを進めるには「OK」を押してください", "これは「start」ボタン",
+	public int arrow_flag = 0;// {1:"obj",2:"startbt",3:"codebt"};
+	string[] text_array = { "コードでの戦い方について説明するよ","まず、動かす机を選ぶよ。", "この机を選ぼう。",
         "これは「coding」ボタン", "一回押すとコーディングパネルが召喚され",
         "もう一回押すとパネルが帰還する","さあ、冒険を始めよう" };
     // Use this for initialization
@@ -35,6 +36,7 @@ public class TutorialSlider : MonoBehaviour {
             StartCoroutine(TSlider(false));
         }
 	}
+
     public IEnumerator TSlider(bool slideFlag)
     {
         float startTime = Time.time;    // 開始時間
@@ -60,14 +62,15 @@ public class TutorialSlider : MonoBehaviour {
     {
         clickCnt++;
         tutorial_text.text = text_array[clickCnt];
-        if(clickCnt == 2)
+        if(clickCnt == 3)
         {            
-            //downArrow.transform.SetParent(transform,true);
-            downArrow.transform.localPosition = new Vector3(-330,-150,0);
+//            downArrow.transform.localPosition = new Vector3(-330,-150,0);
+			StartCoroutine(TSlider(false));
+			arrow_flag = 1;
         }
-        if (clickCnt == 3)
+        if (clickCnt == 4)
         {
-            downArrow.transform.localPosition = new Vector3(-220, -150, 0);
+            //downArrow.transform.localPosition = new Vector3(-220, -150, 0);
         }
 //        if (clickCnt == 4)
 //        {
